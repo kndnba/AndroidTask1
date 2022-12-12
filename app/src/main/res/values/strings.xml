@@ -2,8 +2,28 @@
     <string name="app_name">AndroidTask1</string>
     <string name="hello">Hello</string>
     <string name="andersen">Andersen</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_something">Введите что-нибудь:</string>
-    <string name="push">push</string>
+    <string name="go_to_fragment">go to fragment</string>
+    <string name="go_to_recyclerview">Go to RecyclerView Activity</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="dialog_start_game">Start game</string>
+    <string name="recyler_view_menu">Recyler View</string>
+    <string name="fragment_menu">Fragment</string>
+
+    <string-array name="figures_array">
+        <item>Квадрат</item>
+        <item>Треугольник</item>
+        <item>Параллелепипед</item>
+        <item>Тетраэдр</item>
+        <item>Круг</item>
+        <item>Трапеция</item>
+        <item>Куб</item>
+        <item>Овал</item>
+        <item>Ромб</item>
+        <item>Окружность</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="figure_names">
+        <item>Квадрат</item>
+        <item>Треугольник</item>
+        <item>Параллелепипед</item>
+        <item>Тетраэдр</item>
+        <item>Круг</item>
+        <item>Трапеция</item>
+        <item>Куб</item>
+        <item>Овал</item>
+        <item>Ромб</item>
+        <item>Окружность</item>
+    </string-array>
+</resources>

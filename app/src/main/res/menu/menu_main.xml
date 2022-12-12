@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/recyclerViewMenu"
+        android:title="@string/recyler_view_menu" />
+    <item android:id="@+id/fragment_menu"
+        android:title="@string/fragment_menu" />
+</menu>
