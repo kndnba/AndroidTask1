@@ -14,7 +14,6 @@ import com.bignerdranch.android.androidtask1.R
 
 class MyAdapter(private val names: List<String>, private val context: Context) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
         val textView: TextView = itemView.findViewById(R.id.figureName)
         val layout: ConstraintLayout = itemView.findViewById(R.id.layout)
     }
@@ -48,6 +47,6 @@ class MyAdapter(private val names: List<String>, private val context: Context) :
                 else -> {""}
             }
         }
-        }
+    }
     override fun getItemCount() = names.size
 }

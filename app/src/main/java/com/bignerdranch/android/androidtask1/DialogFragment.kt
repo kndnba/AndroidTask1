@@ -15,7 +15,6 @@ class DialogFragment : DialogFragment() {
         return activity?.let { it ->
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            val myArray: Array<String> = resources.getStringArray(R.array.figure_names)
 
                 builder.setTitle((index+1).toString())
                 builder.setMessage(message)

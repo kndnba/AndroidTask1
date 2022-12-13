@@ -9,6 +9,7 @@ import com.bignerdranch.android.androidtask1.databinding.ActivityRecyclerViewBin
 
 
 class RecyclerViewActivity : AppCompatActivity() {
+
     lateinit var mBinding: ActivityRecyclerViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
