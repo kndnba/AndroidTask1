@@ -14,6 +14,10 @@
     <string name="fragment_menu">Fragment</string>
     <string name="task_1">Задание 1</string>
     <string name="task_2">Задание 2</string>
+    <string name="task_3">Задание 3</string>
+    <string name="task_4">Задание 4</string>
+    <string name="something">Something</string>
+
 
     <string-array name="figures_array">
         <item>Квадрат</item>

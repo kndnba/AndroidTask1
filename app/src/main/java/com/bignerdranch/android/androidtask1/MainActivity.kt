@@ -2,11 +2,14 @@ package com.bignerdranch.android.androidtask1
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.bignerdranch.android.androidtask1.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toolbar.setOnClickListener{
             drawerLayout.open()
         }
+
     }
 
     override fun onStart() {
@@ -61,22 +65,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val id: Int = item.itemId
 
-        if (id == R.id.recyclerViewMenu){
+        fragment = Fragment()
+
+        when (item.itemId){
+            R.id.recyclerViewMenu -> {
             fragment = RecyclerViewFragment()
             commitFragment()
-        } else if (id == R.id.fragment_menu){
+            }
+            R.id.fragment_menu -> {
             fragment = BlankFragment()
             commitFragment()
+            }
+            R.id.task2element1 -> Toast.makeText(this, "Task 2 element 1", Toast.LENGTH_SHORT).show()
+            R.id.task2element2 -> Toast.makeText(this, "Task 2 element 2", Toast.LENGTH_SHORT).show()
+            R.id.task3element1 -> Toast.makeText(this, "Task 3 element 1", Toast.LENGTH_SHORT).show()
+            R.id.task3element2 -> Toast.makeText(this, "Task 3 element 2", Toast.LENGTH_SHORT).show()
+            R.id.task4element1 -> Toast.makeText(this, "Task 4 element 1", Toast.LENGTH_SHORT).show()
+            R.id.task4element2 -> Toast.makeText(this, "Task 4 element 2", Toast.LENGTH_SHORT).show()
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
     private fun commitFragment(){
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.container, fragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, fragment)
+            .replace(R.id.container, fragment)
+            .commit()
     }
+
 }

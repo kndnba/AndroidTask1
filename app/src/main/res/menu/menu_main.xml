@@ -12,4 +12,30 @@
         </menu>
     </item>
 
+    <item android:title="@string/task_2">
+        <menu>
+            <item android:id="@+id/task2element1"
+                android:title="Элемент 1" />
+            <item android:id="@+id/task2element2"
+                android:title="Элемент 2" />
+        </menu>
+    </item>
+
+    <item android:title="@string/task_3">
+        <menu>
+            <item android:id="@+id/task3element1"
+                android:title="Элемент 1" />
+            <item android:id="@+id/task3element2"
+                android:title="Элемент 2" />
+        </menu>
+    </item>
+
+    <item android:title="@string/task_4">
+        <menu>
+            <item android:id="@+id/task4element1"
+                android:title="Элемент 1" />
+            <item android:id="@+id/task4element2"
+                android:title="Элемент 2" />
+        </menu>
+    </item>
 </menu>
