@@ -13,18 +13,15 @@ import com.bignerdranch.android.androidtask1.databinding.FragmentBlankBinding
 
 
 class BlankFragment : Fragment() {
-    lateinit var editText: EditText
-    lateinit var v: View
-    lateinit var binding: FragmentBlankBinding
+    private lateinit var editText: EditText
+    private lateinit var binding: FragmentBlankBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBlankBinding.inflate(layoutInflater)
-        v = inflater.inflate(R.layout.fragment_blank, container, false)
-        editText = v.findViewById(R.id.input_field)
-
+        editText = binding.inputField
         binding.inputField.onTextChange {
             showToast(it)
         }

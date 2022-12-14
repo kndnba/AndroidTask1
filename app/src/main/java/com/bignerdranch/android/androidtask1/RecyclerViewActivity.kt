@@ -10,13 +10,13 @@ import com.bignerdranch.android.androidtask1.databinding.ActivityRecyclerViewBin
 
 class RecyclerViewActivity : AppCompatActivity() {
 
-    lateinit var mBinding: ActivityRecyclerViewBinding
+    private lateinit var binding: ActivityRecyclerViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityRecyclerViewBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
-        val recyclerView: RecyclerView = mBinding.recyclerView
+        binding = ActivityRecyclerViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = MyAdapter(getFiguresList(), this)
     }

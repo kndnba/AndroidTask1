@@ -1,26 +1,38 @@
 package com.bignerdranch.android.androidtask1
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.bignerdranch.android.androidtask1.databinding.ActivityMainBinding
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.navigation.NavigationView
 
 private const val TAG = "MainActivity"
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var mBinding: ActivityMainBinding
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var binding: ActivityMainBinding
     private lateinit var fragment: Fragment
+    private lateinit var navigationView: NavigationView
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var toolbar: MaterialToolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate() called")
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mBinding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        toolbar = binding.topAppBar!!
+        drawerLayout = binding.container
+        navigationView = binding.navigationView
+        navigationView.setNavigationItemSelectedListener(this)
+
+        toolbar.setOnClickListener{
+            drawerLayout.open()
+        }
     }
 
     override fun onStart() {
@@ -48,27 +60,23 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onDestroy() called")
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_main, menu)
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+
+        if (id == R.id.recyclerViewMenu){
+            fragment = RecyclerViewFragment()
+            commitFragment()
+        } else if (id == R.id.fragment_menu){
+            fragment = BlankFragment()
+            commitFragment()
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id: Int = item.itemId
-        if (id == R.id.recyclerViewMenu){
-            val intent = Intent(this, RecyclerViewActivity::class.java)
-            startActivity(intent)
-        }
-        else if (id == R.id.fragment_menu){
-            mBinding.textView.visibility = View.GONE
-            mBinding.textView2.visibility = View.GONE
-            fragment = BlankFragment()
-            val fragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.container, fragment)
-            fragmentTransaction.commit()
-
-        }
-        return super.onOptionsItemSelected(item);
+    private fun commitFragment(){
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.container, fragment)
+        fragmentTransaction.commit()
     }
 }

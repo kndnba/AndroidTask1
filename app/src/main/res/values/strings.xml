@@ -12,6 +12,8 @@
     <string name="dialog_start_game">Start game</string>
     <string name="recyler_view_menu">Recyler View</string>
     <string name="fragment_menu">Fragment</string>
+    <string name="task_1">Задание 1</string>
+    <string name="task_2">Задание 2</string>
 
     <string-array name="figures_array">
         <item>Квадрат</item>
