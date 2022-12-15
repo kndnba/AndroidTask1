@@ -3,39 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="@string/task_1">
-        <menu>
-    <item android:id="@+id/recyclerViewMenu"
-        android:title="@string/recyler_view_menu" />
-    <item android:id="@+id/fragment_menu"
-        android:title="@string/fragment_menu" />
-        </menu>
-    </item>
+    <item android:id="@+id/task1"
+        android:title="@string/task_1" />
 
-    <item android:title="@string/task_2">
-        <menu>
-            <item android:id="@+id/task2element1"
-                android:title="Элемент 1" />
-            <item android:id="@+id/task2element2"
-                android:title="Элемент 2" />
-        </menu>
-    </item>
 
-    <item android:title="@string/task_3">
-        <menu>
-            <item android:id="@+id/task3element1"
-                android:title="Элемент 1" />
-            <item android:id="@+id/task3element2"
-                android:title="Элемент 2" />
-        </menu>
-    </item>
+    <item android:id="@+id/task2"
+        android:title="@string/task_2" />
 
-    <item android:title="@string/task_4">
-        <menu>
-            <item android:id="@+id/task4element1"
-                android:title="Элемент 1" />
-            <item android:id="@+id/task4element2"
-                android:title="Элемент 2" />
-        </menu>
-    </item>
+
+    <item android:id="@+id/task3"
+        android:title="@string/task_3" />
+
+
+    <item android:id="@+id/task4"
+        android:title="@string/task_4" />
 </menu>

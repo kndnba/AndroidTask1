@@ -10,13 +10,14 @@
     <string name="cancel">Cancel</string>
 
     <string name="dialog_start_game">Start game</string>
-    <string name="recyler_view_menu">Recyler View</string>
+    <string name="recycler_view_menu">Recycler View</string>
     <string name="fragment_menu">Fragment</string>
     <string name="task_1">Задание 1</string>
     <string name="task_2">Задание 2</string>
     <string name="task_3">Задание 3</string>
     <string name="task_4">Задание 4</string>
     <string name="something">Something</string>
+    <string name="text_watcher">Text Watcher</string>
 
 
     <string-array name="figures_array">

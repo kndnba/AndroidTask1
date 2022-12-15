@@ -69,20 +69,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragment = Fragment()
 
         when (item.itemId){
-            R.id.recyclerViewMenu -> {
-            fragment = RecyclerViewFragment()
+            R.id.task1 -> {
+            fragment = Task1Fragment()
             commitFragment()
             }
-            R.id.fragment_menu -> {
-            fragment = BlankFragment()
-            commitFragment()
-            }
-            R.id.task2element1 -> Toast.makeText(this, "Task 2 element 1", Toast.LENGTH_SHORT).show()
-            R.id.task2element2 -> Toast.makeText(this, "Task 2 element 2", Toast.LENGTH_SHORT).show()
-            R.id.task3element1 -> Toast.makeText(this, "Task 3 element 1", Toast.LENGTH_SHORT).show()
-            R.id.task3element2 -> Toast.makeText(this, "Task 3 element 2", Toast.LENGTH_SHORT).show()
-            R.id.task4element1 -> Toast.makeText(this, "Task 4 element 1", Toast.LENGTH_SHORT).show()
-            R.id.task4element2 -> Toast.makeText(this, "Task 4 element 2", Toast.LENGTH_SHORT).show()
+            R.id.task2 -> Toast.makeText(this, "Task 2", Toast.LENGTH_SHORT).show()
+            R.id.task3 -> Toast.makeText(this, "Task 3", Toast.LENGTH_SHORT).show()
+            R.id.task4 -> Toast.makeText(this, "Task 4", Toast.LENGTH_SHORT).show()
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
