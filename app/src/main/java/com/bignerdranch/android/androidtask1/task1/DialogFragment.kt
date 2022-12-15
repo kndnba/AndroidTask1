@@ -1,10 +1,11 @@
-package com.bignerdranch.android.androidtask1
+package com.bignerdranch.android.androidtask1.task1
 
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.bignerdranch.android.androidtask1.R
 
 
 class DialogFragment : DialogFragment() {
@@ -13,12 +14,12 @@ class DialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let { it ->
-            // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
 
                 builder.setTitle((index+1).toString())
                 builder.setMessage(message)
-                .setPositiveButton(R.string.ok,
+                .setPositiveButton(
+                    R.string.ok,
                     DialogInterface.OnClickListener { dialog, id -> dialog.cancel()
                     })
             builder.create()

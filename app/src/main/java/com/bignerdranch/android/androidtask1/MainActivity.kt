@@ -2,15 +2,16 @@ package com.bignerdranch.android.androidtask1
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
+import com.bignerdranch.android.androidtask1.task1.Task1Fragment
 import com.bignerdranch.android.androidtask1.databinding.ActivityMainBinding
+import com.bignerdranch.android.androidtask1.task2.Task2Fragment
+import com.bignerdranch.android.androidtask1.task3.Task3Fragment
+import com.bignerdranch.android.androidtask1.task4.Task4Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 
@@ -32,11 +33,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout = binding.container
         navigationView = binding.navigationView
         navigationView.setNavigationItemSelectedListener(this)
-
+        fragment = Task1Fragment()
+        commitFragment()
         toolbar.setOnClickListener{
             drawerLayout.open()
         }
-
     }
 
     override fun onStart() {
@@ -65,17 +66,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        fragment = Fragment()
-
         when (item.itemId){
             R.id.task1 -> {
             fragment = Task1Fragment()
             commitFragment()
             }
-            R.id.task2 -> Toast.makeText(this, "Task 2", Toast.LENGTH_SHORT).show()
-            R.id.task3 -> Toast.makeText(this, "Task 3", Toast.LENGTH_SHORT).show()
-            R.id.task4 -> Toast.makeText(this, "Task 4", Toast.LENGTH_SHORT).show()
+            R.id.task2 -> {
+                fragment = Task2Fragment()
+                commitFragment()
+            }
+            R.id.task3 -> {
+                fragment = Task3Fragment()
+                commitFragment()
+            }
+            R.id.task4 -> {
+                fragment = Task4Fragment()
+                commitFragment()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
@@ -83,9 +90,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun commitFragment(){
         supportFragmentManager.beginTransaction()
-            .add(R.id.container, fragment)
-            .replace(R.id.container, fragment)
+            .replace(R.id.main_container, fragment)
             .commit()
     }
-
 }

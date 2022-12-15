@@ -1,21 +1,23 @@
-package com.bignerdranch.android.androidtask1
+package com.bignerdranch.android.androidtask1.task1
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.androidtask1.adapter.MyAdapter
-import com.bignerdranch.android.androidtask1.databinding.FragmentRecyclerViewBinding
+import android.widget.EditText
+import android.widget.Toast
+import com.bignerdranch.android.androidtask1.databinding.FragmentBlankBinding
 
-private const val TAG = "RecyclerViewFragment"
+private const val TAG = "BlankFragment"
 
-class RecyclerViewFragment : Fragment() {
-    private lateinit var binding: FragmentRecyclerViewBinding
+class BlankFragment : Fragment() {
+    private lateinit var editText: EditText
+    private lateinit var binding: FragmentBlankBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -26,16 +28,16 @@ class RecyclerViewFragment : Fragment() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate() called")
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         Log.d(TAG, "onCreateView() called")
-        binding = FragmentRecyclerViewBinding.inflate(layoutInflater)
-        val recyclerView: RecyclerView = binding.recyclerViewFragment
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = MyAdapter(getFiguresList(), requireContext())
+        binding = FragmentBlankBinding.inflate(layoutInflater)
+        editText = binding.inputField
+        binding.inputField.onTextChange {
+            showToast(it)
+        }
         return binding.root
     }
 
@@ -74,7 +76,23 @@ class RecyclerViewFragment : Fragment() {
         Log.d(TAG, "onDetach() called")
     }
 
-    private fun getFiguresList(): List<String> {
-        return this.resources.getStringArray(R.array.figure_names).toList()
+    inline fun EditText.onTextChange(crossinline listener: (String) -> Unit) {
+        this.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //NO OP
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                listener(charSequence.toString())
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                //NO OP
+            }
+        })
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
     }
 }

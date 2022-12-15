@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.bignerdranch.android.androidtask1.DialogFragment
+import com.bignerdranch.android.androidtask1.task1.DialogFragment
 import com.bignerdranch.android.androidtask1.R
 
 

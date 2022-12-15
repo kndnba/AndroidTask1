@@ -7,13 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
@@ -25,7 +28,18 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-    </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/main_container"
+            android:layout_width="378dp"
+            android:layout_height="556dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,8 +54,8 @@
             android:layout_gravity="start"
             app:menu="@menu/menu_main"
             android:visibility="visible"/>
-    </LinearLayout>
 
+    </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

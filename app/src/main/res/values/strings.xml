@@ -9,7 +9,6 @@
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
 
-    <string name="dialog_start_game">Start game</string>
     <string name="recycler_view_menu">Recycler View</string>
     <string name="fragment_menu">Fragment</string>
     <string name="task_1">Задание 1</string>
