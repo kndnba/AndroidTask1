@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.task1.DialogFragment
 import com.bignerdranch.android.androidtask1.R
 
-
-class MyAdapter(private val names: List<String>, private val context: Context) : RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
+class MyAdapter(private val names: List<String>, private val context: Context) :
+    RecyclerView.Adapter<MyAdapter.MyViewHolder>(){
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val textView: TextView = itemView.findViewById(R.id.figureName)
         val layout: ConstraintLayout = itemView.findViewById(R.id.layout)
@@ -33,20 +33,23 @@ class MyAdapter(private val names: List<String>, private val context: Context) :
 
             myDialogFragment.index = position
 
-            myDialogFragment.message = when (names[position]){
-                "Квадрат" -> "Первый"
-                "Треугольник" -> "Второй"
-                "Параллелепипед" -> "Третий"
-                "Тетраэдр" -> "Четвертый"
-                "Круг" -> "Пятый"
-                "Трапеция" -> "Шестой"
-                "Куб" -> "Седьмой"
-                "Овал" -> "Восьмой"
-                "Ромб" -> "Девятый"
-                "Окружность" -> "Десятый"
-                else -> {""}
-            }
+            myDialogFragment.message = getMessageByPosition(names, position)
         }
     }
+
+    private fun getMessageByPosition(names: List<String>, position: Int) = when (names[position]){
+        "Квадрат" -> "Первый"
+        "Треугольник" -> "Второй"
+        "Параллелепипед" -> "Третий"
+        "Тетраэдр" -> "Четвертый"
+        "Круг" -> "Пятый"
+        "Трапеция" -> "Шестой"
+        "Куб" -> "Седьмой"
+        "Овал" -> "Восьмой"
+        "Ромб" -> "Девятый"
+        "Окружность" -> "Десятый"
+        else -> {""}
+    }
+
     override fun getItemCount() = names.size
 }

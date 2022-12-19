@@ -17,6 +17,10 @@
     <string name="task_4">Задание 4</string>
     <string name="something">Something</string>
     <string name="text_watcher">Text Watcher</string>
+    <string name="hello_task_2_fragment">Hello task 2 fragment</string>
+    <string name="hello_task_3_fragment">Hello task 3 fragment</string>
+    <string name="hello_task_4_fragment">Hello task 4 fragment</string>
+    <string name="name">name</string>
 
 
     <string-array name="figures_array">

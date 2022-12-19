@@ -15,8 +15,6 @@ import com.bignerdranch.android.androidtask1.task4.Task4Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 
-private const val TAG = "MainActivity"
-
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragment: Fragment
@@ -29,40 +27,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Log.d(TAG, "onCreate() called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        toolbar = binding.topAppBar!!
-        drawerLayout = binding.container
-        navigationView = binding.navigationView
-        navigationView.setNavigationItemSelectedListener(this)
-        fragment = Task1Fragment()
-        commitFragment()
-        toolbar.setOnClickListener{
-            drawerLayout.open()
+        binding.topAppBar.let { toolbar ->
+            drawerLayout = binding.container
+            navigationView = binding.navigationView
+            navigationView.setNavigationItemSelectedListener(this)
+            fragment = Task1Fragment()
+            commitFragment()
+            toolbar.setOnClickListener {
+                drawerLayout.open()
+            }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart() called")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume() called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause() called")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop() called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG, "onDestroy() called")
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -92,5 +66,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, fragment)
             .commit()
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 }

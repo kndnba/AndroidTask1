@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.bignerdranch.android.androidtask1.R
 
-
 class DialogFragment : DialogFragment() {
     var index: Int = 0
     var message = ""

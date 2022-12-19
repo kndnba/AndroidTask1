@@ -9,18 +9,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello task 3 fragment"
-        app:layout_constraintBottom_toBottomOf="@+id/task3_container"
-        app:layout_constraintEnd_toEndOf="@+id/task3_container"
-        app:layout_constraintStart_toStartOf="@+id/task3_container"
-        app:layout_constraintTop_toTopOf="@+id/task3_container" />
+        android:text="@string/hello_task_3_fragment"
+        app:layout_constraintBottom_toBottomOf="@id/task3_container"
+        app:layout_constraintEnd_toEndOf="@id/task3_container"
+        app:layout_constraintStart_toStartOf="@id/task3_container"
+        app:layout_constraintTop_toTopOf="@id/task3_container" />
 
     <FrameLayout
         android:id="@+id/task3_container"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

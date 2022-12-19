@@ -14,7 +14,6 @@ class Task1Fragment : Fragment() {
     private lateinit var textWatcherFragmentButton: Button
     private lateinit var recyclerViewFragmentButton: Button
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
