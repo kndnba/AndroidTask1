@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">AndroidTask1</string>
+    <string name="hello">Hello</string>
+    <string name="andersen">Andersen</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_something">Введите что-нибудь:</string>
+    <string name="go_to_fragment">go to fragment</string>
+    <string name="go_to_recyclerview">Go to RecyclerView Activity</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="recycler_view_menu">Recycler View</string>
+    <string name="fragment_menu">Fragment</string>
+    <string name="task_1">Задание 1</string>
+    <string name="task_2">Задание 2</string>
+    <string name="task_3">Задание 3</string>
+    <string name="task_4">Задание 4</string>
+    <string name="something">Something</string>
+    <string name="text_watcher">Text Watcher</string>
+    <string name="hello_task_2_fragment">Hello task 2 fragment</string>
+    <string name="hello_task_3_fragment">Hello task 3 fragment</string>
+    <string name="hello_task_4_fragment">Hello task 4 fragment</string>
+    <string name="name">name</string>
+
+
+    <string-array name="figures_array">
+        <item>Квадрат</item>
+        <item>Треугольник</item>
+        <item>Параллелепипед</item>
+        <item>Тетраэдр</item>
+        <item>Круг</item>
+        <item>Трапеция</item>
+        <item>Куб</item>
+        <item>Овал</item>
+        <item>Ромб</item>
+        <item>Окружность</item>
+    </string-array>
+
 </resources>
