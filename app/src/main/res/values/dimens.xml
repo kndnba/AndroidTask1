@@ -4,5 +4,16 @@
     <dimen name="helloAndersen_top_indent">300dp</dimen>
     <dimen name="cardview_height">150dp</dimen>
     <dimen name="cardview_indent">8dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="logo_indent">32sp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="button_marginStart">8dp</dimen>
+    <dimen name="button_marginTop">8dp</dimen>
+    <dimen name="button_marginEnd">8dp</dimen>
+    <dimen name="button_textSize">20sp</dimen>
+    <dimen name="recycler_view_item">60dp</dimen>
+    <dimen name="textView_marginStart">60dp</dimen>
+    <dimen name="textView_marginTop">10dp</dimen>
 
 </resources>

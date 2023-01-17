@@ -30,11 +30,10 @@
 
         <FrameLayout
             android:id="@+id/main_container"
-            android:layout_width="378dp"
-            android:layout_height="556dp"
-            android:layout_marginTop="64dp"
+            android:layout_width="699dp"
+            android:layout_height="333dp"
+            android:layout_marginTop="60dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.515"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </FrameLayout>

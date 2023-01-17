@@ -21,6 +21,13 @@
     <string name="hello_task_3_fragment">Hello task 3 fragment</string>
     <string name="hello_task_4_fragment">Hello task 4 fragment</string>
     <string name="name">name</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="stop">Stop</string>
+    <string name="song_title">Souk eye</string>
+    <string name="artist_title">Gorillaz</string>
+    <string name="genre_title">Alternative</string>
+    <string name="choose_artist">Выбрать исполнителя</string>
 
 
     <string-array name="figures_array">
@@ -34,6 +41,38 @@
         <item>Овал</item>
         <item>Ромб</item>
         <item>Окружность</item>
+    </string-array>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="startMusicActivity">Открыть плеер</string>
+
+    <string-array name="Genres">
+        <item>score</item>
+        <item>pop</item>
+        <item>electronic</item>
+        <item>rap</item>
+        <item>grunge</item>
+        <item>alternative</item>
+        <item>art_rock</item>
+    </string-array>
+
+    <string-array name="Artists">
+        <item>mick_gordon</item>
+        <item>lady_gaga</item>
+        <item>daft_punk</item>
+        <item>kid_cudi</item>
+        <item>john_paesano</item>
+        <item>the_shaggs</item>
+        <item>red_hot_chili_peppers</item>
+        <item>gorillaz</item>
+        <item>arctic_monkeys</item>
+        <item>toby_fox</item>
     </string-array>
 
 </resources>
