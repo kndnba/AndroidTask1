@@ -12,7 +12,13 @@ class MusicReceiver : BroadcastReceiver() {
         val songArtist = intent?.getStringExtra(MyDBNames.ARTIST)
         val songGenre = intent?.getStringExtra(MyDBNames.GENRE)
         val startService = Intent(context, MyService::class.java)
+        val musicActivity = Intent(context, MusicActivity::class.java)
         startService.apply {
+            putExtra("songName", songName)
+            putExtra("songArtist", songArtist)
+            putExtra("songGenre", songGenre)
+        }
+        musicActivity.apply {
             putExtra("songName", songName)
             putExtra("songArtist", songArtist)
             putExtra("songGenre", songGenre)
@@ -20,5 +26,6 @@ class MusicReceiver : BroadcastReceiver() {
         context?.startService(startService)
         context?.stopService(startService)
         context?.startService(startService)
+        context?.startService(musicActivity)
     }
 }

@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.TextView
 import com.bignerdranch.android.androidtask1.MyService
 import com.bignerdranch.android.androidtask1.databinding.ActivityMusicBinding
-import com.bignerdranch.android.androidtask1.task2.db.MyDBNames
 
 class MusicActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMusicBinding
@@ -22,13 +21,13 @@ class MusicActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMusicBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         playButton = binding.play
         stopButton = binding.stop
         pauseButton = binding.pause
         chooseArtistButton = binding.chooseArtist
 
         val intentArtistActivity = Intent(this, ArtistActivity::class.java)
+
         chooseArtistButton.setOnClickListener {
             startActivity(intentArtistActivity)
         }
@@ -37,24 +36,18 @@ class MusicActivity : AppCompatActivity() {
         val intentFilter = IntentFilter(ArtistActivity.SONG_DATA).also {
             registerReceiver(receiver, it)
         }
+            val intent = Intent(this, MusicReceiver::class.java)
+            val textViewSongName: TextView = binding.songTitle
+            val textViewGenre: TextView = binding.genreTitle
+            val textViewArtist: TextView = binding.artistTitle
 
+            val songName = intent.getStringExtra("songName")
+            val songGenre = intent.getStringExtra("songGenre")
+            val songArtist = intent.getStringExtra("songArtist")
 
-
-        val intent = Intent(this, MusicReceiver::class.java)
-
-
-        val textViewSongName: TextView = binding.songTitle
-        val textViewGenre: TextView = binding.genreTitle
-        val textViewArtist: TextView = binding.artistTitle
-
-        val songName = intent.getStringExtra("songName")
-        val songArtist = intent.getStringExtra("songArtist")
-        val songGenre = intent.getStringExtra("songGenre")
-        val songPath = intent.getStringExtra("songPath")
-
-        textViewSongName.text = ("Song: $songName")
-        textViewGenre.text = ("Genre: $songGenre")
-        textViewArtist.text = ("Artist: $songArtist")
+            textViewSongName.text = songName
+            textViewGenre.text = songGenre
+            textViewArtist.text = songArtist
     }
 
     private fun initMusicService() {
