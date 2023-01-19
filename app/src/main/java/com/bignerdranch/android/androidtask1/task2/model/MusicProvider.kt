@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.model
 
 import android.content.ContentProvider
 import android.content.ContentValues
@@ -6,8 +6,8 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.provider.BaseColumns
-import com.bignerdranch.android.androidtask1.task2.db.DbHelper
-import com.bignerdranch.android.androidtask1.task2.db.MyDBNames
+import com.bignerdranch.android.androidtask1.task2.model.db.DbHelper
+import com.bignerdranch.android.androidtask1.task2.model.db.MyDBNames
 
 class MusicProvider : ContentProvider() {
     lateinit var db : SQLiteDatabase

@@ -1,12 +1,14 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.view
 
+import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
 import android.widget.Button
 import android.widget.TextView
-import com.bignerdranch.android.androidtask1.MyService
 import com.bignerdranch.android.androidtask1.databinding.ActivityMusicBinding
 
 class MusicActivity : AppCompatActivity() {
@@ -16,6 +18,9 @@ class MusicActivity : AppCompatActivity() {
     private lateinit var pauseButton: Button
     private lateinit var chooseArtistButton: Button
     private val receiver = MusicReceiver()
+    private var myService : MyService? = null
+    private var bound = false
+    private var sConn: ServiceConnection? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +53,16 @@ class MusicActivity : AppCompatActivity() {
             textViewSongName.text = songName
             textViewGenre.text = songGenre
             textViewArtist.text = songArtist
+        sConn = object : ServiceConnection {
+            override fun onServiceConnected(name: ComponentName, binder: IBinder) {
+                bound = true
+                myService = (binder as MyService.LocalBinder).getService()
+            }
+
+            override fun onServiceDisconnected(name: ComponentName) {
+                bound = false
+            }
+        }
     }
 
     private fun initMusicService() {
@@ -58,7 +73,7 @@ class MusicActivity : AppCompatActivity() {
         }
 
         pauseButton.setOnClickListener {
-            startService(intentService)
+            myService?.pause()
         }
 
         stopButton.setOnClickListener {

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.ActivityArtistBinding
+import com.bignerdranch.android.androidtask1.task2.model.MusicProvider
+import com.bignerdranch.android.androidtask1.task2.presenter.MusicAdapter
 
 class ArtistActivity : AppCompatActivity() {
     private val itemsList = ArrayList<String>()
@@ -100,9 +102,7 @@ class ArtistActivity : AppCompatActivity() {
                 do {
                     if (cursor.getString(2) == artist)
                         itemsList.add(
-                            cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(
-                                3
-                            ) + " " + cursor.getString(4)
+                            "${cursor.getString(1)} ${cursor.getString(2)} ${cursor.getString(3)} ${cursor.getString(4)}"
                         )
                 } while (cursor.moveToNext())}
         }
@@ -128,9 +128,7 @@ class ArtistActivity : AppCompatActivity() {
                 do {
                     if (cursor.getString(3) == genre)
                         itemsList.add(
-                            cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(
-                                3
-                            ) + " " + cursor.getString(4)
+                            "${cursor.getString(1)} ${cursor.getString(2)} ${cursor.getString(3)} ${cursor.getString(4)}"
                         )
                 } while (cursor.moveToNext())
             }

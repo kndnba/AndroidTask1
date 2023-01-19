@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.presenter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.R
-import com.bignerdranch.android.androidtask1.task2.ArtistActivity.Companion.SONG_DATA
-import com.bignerdranch.android.androidtask1.task2.db.MyDBNames
+import com.bignerdranch.android.androidtask1.task2.view.ArtistActivity.Companion.SONG_DATA
+import com.bignerdranch.android.androidtask1.task2.model.db.MyDBNames
 
 internal class MusicAdapter(private var itemsList: List<String>, val listener: () -> Unit) : RecyclerView.Adapter<MusicAdapter.MyViewHolder>() {
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {

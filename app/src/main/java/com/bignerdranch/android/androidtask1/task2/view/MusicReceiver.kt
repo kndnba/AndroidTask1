@@ -1,10 +1,9 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.view
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.bignerdranch.android.androidtask1.MyService
-import com.bignerdranch.android.androidtask1.task2.db.MyDBNames
+import com.bignerdranch.android.androidtask1.task2.model.db.MyDBNames
 
 class MusicReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -12,13 +11,7 @@ class MusicReceiver : BroadcastReceiver() {
         val songArtist = intent?.getStringExtra(MyDBNames.ARTIST)
         val songGenre = intent?.getStringExtra(MyDBNames.GENRE)
         val startService = Intent(context, MyService::class.java)
-        val musicActivity = Intent(context, MusicActivity::class.java)
         startService.apply {
-            putExtra("songName", songName)
-            putExtra("songArtist", songArtist)
-            putExtra("songGenre", songGenre)
-        }
-        musicActivity.apply {
             putExtra("songName", songName)
             putExtra("songArtist", songArtist)
             putExtra("songGenre", songGenre)
@@ -26,6 +19,5 @@ class MusicReceiver : BroadcastReceiver() {
         context?.startService(startService)
         context?.stopService(startService)
         context?.startService(startService)
-        context?.startService(musicActivity)
     }
 }

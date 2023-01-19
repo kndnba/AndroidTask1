@@ -1,17 +1,19 @@
-package com.bignerdranch.android.androidtask1
+package com.bignerdranch.android.androidtask1.task2.view
 
 import android.app.Service
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.Binder
 import android.os.IBinder
-import android.view.View
 import android.widget.Toast
-import com.bignerdranch.android.androidtask1.task2.MusicActivity
-import com.bignerdranch.android.androidtask1.task2.db.MyDBNames
 
 class MyService : Service(), MediaPlayer.OnPreparedListener {
     private var musicPlayer: MediaPlayer? = null
+    private var isPlaying = false
 
+    inner class LocalBinder : Binder() {
+        fun getService(): MyService = this@MyService
+    }
     override fun onCreate() {
         super.onCreate()
     }
@@ -59,4 +61,8 @@ class MyService : Service(), MediaPlayer.OnPreparedListener {
             }
         }
     }
+    fun pause() {
+            musicPlayer?.pause()
+    }
+
 }

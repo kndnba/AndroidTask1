@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#020D1C"
-    tools:context=".task2.MusicActivity">
+    android:background="@color/player_background"
+    tools:context=".task2.view.MusicActivity">
 
     <ImageView
         android:id="@+id/album_cover"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/logo_indent"
-        android:layout_marginEnd="@dimen/logo_indent"
         android:layout_marginBottom="@dimen/logo_indent"
         android:src="@drawable/andersen"
         app:layout_constraintBottom_toTopOf="@id/song_title"
@@ -55,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/choose_artist"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -65,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/song_title"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/album_cover"
         app:layout_constraintStart_toStartOf="@+id/album_cover"
         app:layout_constraintTop_toBottomOf="@id/artist_title" />
@@ -74,9 +72,9 @@
         android:id="@+id/artist_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/songArtist_indent"
         android:text="@string/artist_title"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/album_cover"
         app:layout_constraintStart_toStartOf="@+id/album_cover"
         app:layout_constraintTop_toTopOf="parent" />
@@ -86,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/genre_title"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/album_cover"
         app:layout_constraintStart_toStartOf="@+id/album_cover"
         app:layout_constraintTop_toBottomOf="@+id/song_title" />

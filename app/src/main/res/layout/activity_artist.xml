@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#020D1C"
-
-    tools:context=".task2.ArtistActivity">
+    android:background="@color/player_background"
+    tools:context=".task2.view.ArtistActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSongs"
@@ -21,7 +20,7 @@
         android:id="@+id/artist_spinner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:clickable="true"
         android:entries="@array/Artists"
         android:focusable="true"
@@ -34,7 +33,7 @@
         android:id="@+id/genre_spinner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:clickable="true"
         android:entries="@array/Genres"
         android:focusable="true"

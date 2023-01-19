@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task2.db
+package com.bignerdranch.android.androidtask1.task2.model.db
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
