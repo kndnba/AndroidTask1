@@ -16,5 +16,7 @@
     <dimen name="recycler_view_item">60dp</dimen>
     <dimen name="textView_marginStart">60dp</dimen>
     <dimen name="textView_marginTop">10dp</dimen>
+    <dimen name="textSize">16sp</dimen>
+
 
 </resources>

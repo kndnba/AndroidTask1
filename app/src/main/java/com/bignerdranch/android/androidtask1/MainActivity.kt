@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawerLayout = binding.container
             navigationView = binding.navigationView
             navigationView.setNavigationItemSelectedListener(this)
-            fragment = Task2Fragment()
+            fragment = Task3Fragment()
             commitFragment()
+
             toolbar.setOnClickListener {
                 drawerLayout.open()
             }

@@ -1,6 +1,5 @@
 package com.bignerdranch.android.androidtask1.task1
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,7 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.R
-import com.bignerdranch.android.androidtask1.adapter.MyAdapter
+import com.bignerdranch.android.androidtask1.task1.adapter.MyAdapter
 import com.bignerdranch.android.androidtask1.databinding.FragmentRecyclerViewBinding
 
 private const val TAG = "RecyclerViewFragment"

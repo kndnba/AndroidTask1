@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/news_container">
+    <Spinner
+        android:id="@+id/news_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@color/white"
+        android:clickable="true"
+        android:entries="@array/NewsThemes"
+        android:focusable="true">
+    </Spinner>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".task2.Task2Fragment">
+    android:id="@+id/swipeRefresh"
+    tools:context=".task3.Task3Fragment"
+   >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_task_3_fragment"
-        app:layout_constraintBottom_toBottomOf="@id/task3_container"
-        app:layout_constraintEnd_toEndOf="@id/task3_container"
-        app:layout_constraintStart_toStartOf="@id/task3_container"
-        app:layout_constraintTop_toTopOf="@id/task3_container" />
-
-    <FrameLayout
-        android:id="@+id/task3_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerNewsList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:itemCount="20"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
