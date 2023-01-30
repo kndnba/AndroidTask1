@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.task3.NewsFragment
 import com.bignerdranch.android.androidtask1.task3.model.News
-import com.bignerdranch.android.androidtask1.task3.model.Source
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_layout_news.view.*
 
 class NewsAdapter (private val newsList : List<News>) : RecyclerView.Adapter<NewsAdapter.MyViewHolder>(){
@@ -34,12 +33,14 @@ class NewsAdapter (private val newsList : List<News>) : RecyclerView.Adapter<New
             val fragment = NewsFragment()
             val context = holder.itemView.context
             val bundle = Bundle()
+
             holder.itemView.setOnClickListener{
                 bundle.putString("image", listItem.urlToImage)
                 bundle.putString("author", listItem.author)
                 bundle.putString("title", listItem.title)
                 bundle.putString("publishedAt", listItem.publishedAt)
                 bundle.putString("description", listItem.description)
+                bundle.putString("name", listItem.source?.name)
 
                 fragment.arguments = bundle
                 (context as AppCompatActivity).supportFragmentManager.beginTransaction()
@@ -50,7 +51,7 @@ class NewsAdapter (private val newsList : List<News>) : RecyclerView.Adapter<New
         }
         val listItem = newsList[position]
         bind(listItem)
-        Picasso.get().load(newsList[position].urlToImage).into(holder.image)
+        Glide.with(holder.image).load(newsList[position].urlToImage).into(holder.image)
         holder.author.text = newsList[position].author
         holder.title.text = newsList[position].title
         holder.publishedAt.text = newsList[position].publishedAt

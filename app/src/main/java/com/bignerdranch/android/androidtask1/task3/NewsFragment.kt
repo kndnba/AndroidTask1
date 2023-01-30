@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import com.bignerdranch.android.androidtask1.databinding.FragmentNewsBinding
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
@@ -25,13 +24,19 @@ class NewsFragment : Fragment() {
         val imageGlide = binding.imageFullNewsGlide
         val imagePicasso = binding.imageFullNewsPicasso
 
-        if (bundle != null){
+        if (bundle != null) {
             title.text = bundle.getString("title")
-            source.text = bundle.getString("author")
+            source.text = bundle.getString("name")
             description.text = bundle.getString("description")
             val imageValue = bundle.getString("image")
-            Glide.with(this).load(imageValue).into(imageGlide)
-            Picasso.get().load(imageValue).into(imagePicasso)
+
+            Glide.with(this)
+                .load(imageValue)
+                .into(imageGlide)
+
+            Picasso.get()
+                .load(imageValue)
+                .into(imagePicasso)
         }
         return binding.root
     }

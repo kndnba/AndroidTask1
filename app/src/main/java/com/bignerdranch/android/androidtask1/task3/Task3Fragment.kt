@@ -15,7 +15,6 @@ import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.FragmentTask3Binding
 import com.bignerdranch.android.androidtask1.task3.adapter.NewsAdapter
 import com.bignerdranch.android.androidtask1.task3.common.Common
-import com.bignerdranch.android.androidtask1.task3.model.News
 import com.bignerdranch.android.androidtask1.task3.newsInterface.NewsResponse
 import com.bignerdranch.android.androidtask1.task3.newsInterface.RetrofitServices
 import kotlinx.android.synthetic.main.fragment_task3.*
@@ -73,12 +72,13 @@ class Task3Fragment : Fragment() {
 
     private fun getSportsNews() {
         mService.getSportsNewsList().enqueue(request)
+
     }
 
     private fun loadNews(response: Response<NewsResponse>){
         swipeRefreshLayout.isRefreshing = false
         showToast("Loading successful")
-        adapter = NewsAdapter(response.body()!!.news)
+        adapter = NewsAdapter(requireNotNull(response.body()?.news))
         recyclerNewsList.adapter = adapter
         adapter.notifyDataSetChanged()
     }

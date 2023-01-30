@@ -16,5 +16,8 @@ data class News(
     val description : String? = null,
 
     @SerializedName("urlToImage")
-    val urlToImage : String? = null
+    val urlToImage : String? = null,
+
+    @SerializedName("source")
+    val source : Source?
 )
