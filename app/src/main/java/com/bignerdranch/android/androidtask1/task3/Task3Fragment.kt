@@ -45,48 +45,48 @@ class Task3Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTask3Binding.inflate(layoutInflater)
-        swipeRefreshLayout = binding.swipeRefresh
-        mService = Common.retrofitService
-        val recyclerView: RecyclerView = binding.recyclerNewsList
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter
-        createSpinner()
-        swipeRefreshLayout.setOnRefreshListener {
-        createSpinner()
+        binding.apply{
+            mService = Common.retrofitService
+            recyclerNewsList.layoutManager = LinearLayoutManager(activity)
+            recyclerNewsList.adapter
+            createSpinner()
+            swipeRefresh.setOnRefreshListener {
+                createSpinner()
         }
-        return binding.root
+            return root
+        }
     }
 
     private fun getSoftwareNews() {
         mService.getSoftwareNewsList().enqueue(request)
-        (context as MainActivity).topAppBar.title = "Software"
+        (requireContext() as MainActivity).topAppBar.title = "Software"
     }
 
     private fun getEntertainmentNews() {
         mService.getEntertainmentNewsList().enqueue(request)
-        (context as MainActivity).topAppBar.title = "Entertainment"
+        (requireContext() as MainActivity).topAppBar.title = "Entertainment"
 
     }
 
     private fun getHealthNews() {
         mService.getHealthNewsList().enqueue(request)
-        (context as MainActivity).topAppBar.title = "Health"
+        (requireContext() as MainActivity).topAppBar.title = "Health"
 
     }
 
     private fun getScienceNews() {
         mService.getScienceNewsList().enqueue(request)
-        (context as MainActivity).topAppBar.title = "Science"
+        (requireContext() as MainActivity).topAppBar.title = "Science"
 
     }
 
     private fun getSportsNews() {
         mService.getSportsNewsList().enqueue(request)
-        (context as MainActivity).topAppBar.title = "Sports"
+        (requireContext() as MainActivity).topAppBar.title = "Sports"
     }
 
     private fun loadNews(response: Response<NewsResponse>){
-        swipeRefreshLayout.isRefreshing = false
+        swipeRefresh.isRefreshing = false
         showToast("Loading successful")
         adapter = NewsAdapter(requireNotNull(response.body()?.news))
         recyclerNewsList.adapter = adapter

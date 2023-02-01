@@ -17,27 +17,23 @@ class NewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNewsBinding.inflate(layoutInflater)
-        val title = binding.newsTitle
-        val source = binding.sourceName
-        val description = binding.newsDescription
-        val bundle = this.arguments
-        val imageGlide = binding.imageFullNewsGlide
-        val imagePicasso = binding.imageFullNewsPicasso
+        binding.apply {
+            val bundle = arguments
+            if (bundle != null) {
+                newsTitle.text = bundle.getString("title")
+                sourceName.text = bundle.getString("name")
+                newsDescription.text = bundle.getString("description")
+                val imageValue = bundle.getString("image")
 
-        if (bundle != null) {
-            title.text = bundle.getString("title")
-            source.text = bundle.getString("name")
-            description.text = bundle.getString("description")
-            val imageValue = bundle.getString("image")
+                Glide.with(requireContext())
+                    .load(imageValue)
+                    .into(imageFullNewsGlide)
 
-            Glide.with(this)
-                .load(imageValue)
-                .into(imageGlide)
-
-            Picasso.get()
-                .load(imageValue)
-                .into(imagePicasso)
+                Picasso.get()
+                    .load(imageValue)
+                    .into(imageFullNewsPicasso)
+            }
+            return root
         }
-        return binding.root
     }
 }
