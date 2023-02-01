@@ -8,25 +8,31 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.bignerdranch.android.androidtask1.MainActivity
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.FragmentTask3Binding
 import com.bignerdranch.android.androidtask1.task3.adapter.NewsAdapter
 import com.bignerdranch.android.androidtask1.task3.common.Common
 import com.bignerdranch.android.androidtask1.task3.newsInterface.NewsResponse
 import com.bignerdranch.android.androidtask1.task3.newsInterface.RetrofitServices
+import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_task3.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.jar.Manifest
 
 class Task3Fragment : Fragment() {
     private lateinit var binding: FragmentTask3Binding
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var mService: RetrofitServices
     private lateinit var adapter: NewsAdapter
+
     private var itemsList = ArrayList<String>()
     private val request = object : Callback<NewsResponse> {
         override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
@@ -56,23 +62,30 @@ class Task3Fragment : Fragment() {
 
     private fun getSoftwareNews() {
         mService.getSoftwareNewsList().enqueue(request)
+        (context as MainActivity).topAppBar.title = "Software"
     }
 
     private fun getEntertainmentNews() {
         mService.getEntertainmentNewsList().enqueue(request)
+        (context as MainActivity).topAppBar.title = "Entertainment"
+
     }
 
     private fun getHealthNews() {
         mService.getHealthNewsList().enqueue(request)
+        (context as MainActivity).topAppBar.title = "Health"
+
     }
 
     private fun getScienceNews() {
         mService.getScienceNewsList().enqueue(request)
+        (context as MainActivity).topAppBar.title = "Science"
+
     }
 
     private fun getSportsNews() {
         mService.getSportsNewsList().enqueue(request)
-
+        (context as MainActivity).topAppBar.title = "Sports"
     }
 
     private fun loadNews(response: Response<NewsResponse>){
