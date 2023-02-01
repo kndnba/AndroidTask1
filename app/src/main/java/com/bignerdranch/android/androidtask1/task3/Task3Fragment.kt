@@ -26,7 +26,6 @@ import retrofit2.Response
 
 class Task3Fragment : Fragment() {
     private lateinit var binding: FragmentTask3Binding
-    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var mService: RetrofitServices
     private lateinit var adapter: NewsAdapter
 
