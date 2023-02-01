@@ -1,5 +1,6 @@
 package com.bignerdranch.android.androidtask1
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -14,6 +15,9 @@ import com.bignerdranch.android.androidtask1.task3.Task3Fragment
 import com.bignerdranch.android.androidtask1.task4.Task4Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import java.util.ResourceBundle.getBundle
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
@@ -24,14 +28,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d(TAG, "onCreate() called")
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.topAppBar.let { toolbar ->
             drawerLayout = binding.container
             navigationView = binding.navigationView
             navigationView.setNavigationItemSelectedListener(this)
-            fragment = Task2Fragment()
+            fragment = Task3Fragment()
             commitFragment()
             toolbar.setOnClickListener {
                 drawerLayout.open()
@@ -66,9 +69,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, fragment)
             .commit()
-    }
-
-    companion object {
-        private const val TAG = "MainActivity"
     }
 }

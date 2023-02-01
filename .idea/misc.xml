@@ -10,13 +10,16 @@
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/drawable/ic_baseline_stop_24.xml" value="0.1595" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1925" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout-land/activity_main.xml" value="0.21428571428571427" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout-v23/fragment_news.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/activity_artist.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/activity_music.xml" value="0.264" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/activity_news.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/activity_recycler_view.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/content_artist.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_blank.xml" value="0.21240942028985507" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_first.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_news.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_recycler_view.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_second.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_task1.xml" value="0.25" />
@@ -25,6 +28,7 @@
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/fragment_task4.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/item_layout.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/item_layout_music.xml" value="0.2076923076923077" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/layout/item_layout_news.xml" value="0.18984375" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/menu/menu.xml" value="0.24923076923076923" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/AndroidTask1/app/src/main/res/menu/menu_main.xml" value="0.24923076923076923" />
         <entry key="..\:/Users/Mvideo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.2059071729957806" />

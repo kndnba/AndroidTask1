@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.adapter
+package com.bignerdranch.android.androidtask1.task1.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

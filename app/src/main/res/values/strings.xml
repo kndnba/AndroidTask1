@@ -51,6 +51,15 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="startMusicActivity">Открыть плеер</string>
+    <string name="open_app">Open App</string>
+    <string name="txt_title">Title</string>
+    <string name="txt_author">Author</string>
+    <string name="txt_publishedAt">Published at</string>
+    <string name="news_title">Title</string>
+    <string name="news_description">Description</string>
+    <string name="source_name">Source name</string>
+    <string name="picasso_pic">Picasso pic:</string>
+    <string name="glide_pic">Glide pic:</string>
 
     <string-array name="Genres">
         <item>score</item>
@@ -75,4 +84,11 @@
         <item>toby_fox</item>
     </string-array>
 
+    <string-array name="NewsThemes">
+        <item>software</item>
+        <item>entertainment</item>
+        <item>health</item>
+        <item>science</item>
+        <item>sports</item>
+    </string-array>
 </resources>
