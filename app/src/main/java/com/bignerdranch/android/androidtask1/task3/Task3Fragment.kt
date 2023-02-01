@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -19,13 +18,11 @@ import com.bignerdranch.android.androidtask1.task3.adapter.NewsAdapter
 import com.bignerdranch.android.androidtask1.task3.common.Common
 import com.bignerdranch.android.androidtask1.task3.newsInterface.NewsResponse
 import com.bignerdranch.android.androidtask1.task3.newsInterface.RetrofitServices
-import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_task3.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.jar.Manifest
 
 class Task3Fragment : Fragment() {
     private lateinit var binding: FragmentTask3Binding
