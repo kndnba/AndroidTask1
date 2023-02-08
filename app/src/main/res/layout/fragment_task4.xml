@@ -6,12 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/task4_container">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_the_circle"
+            android:textSize="@dimen/logo_indent">
+        </TextView>
 
         <com.bignerdranch.android.androidtask1.task4.ui.CustomCircleView
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            android:id="@+id/circle_center">
+            android:id="@+id/circle_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:circleRadius="120dp"
+            app:circleColor="#922EB6">
         </com.bignerdranch.android.androidtask1.task4.ui.CustomCircleView>
+
 
 </LinearLayout>

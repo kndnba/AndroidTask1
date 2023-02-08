@@ -9,8 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bignerdranch.android.androidtask1.MainActivity
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.FragmentTask3Binding
