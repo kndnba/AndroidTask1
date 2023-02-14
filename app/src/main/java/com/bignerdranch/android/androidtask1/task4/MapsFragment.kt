@@ -2,6 +2,8 @@ package com.bignerdranch.android.androidtask1.task4
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -9,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -38,14 +41,20 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     private var locationPermissionGranted = false
     private var lastKnownLocation: Location? = null
     private val defaultLocation = LatLng(43.2, 76.8)
-    private val callback = OnMapReadyCallback { googleMap ->
+    private val callback = OnMapReadyCallback {
+        onMapReadyCallback(it)
+    }
+
+    private fun onMapReadyCallback(googleMap: GoogleMap){
         map = googleMap
         googleMap.addMarker(MarkerOptions().position(defaultLocation).title("Marker in Almaty"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
         googleMap.setMinZoomPreference(12.0F)
         googleMap.setOnMarkerClickListener(this)
         // Prompt the user for permission.
+
         getLocationPermission()
+        context?.checkBackgroundLocationPermissionAPI30(PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI()
@@ -53,14 +62,14 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         // Get the current location of the device and set the position of the map.
         getDeviceLocation()
         generateRandomMarkers(googleMap)
+
         googleMap.setOnMapClickListener {
             val markerOptions = MarkerOptions()
             markerOptions.position(it)
             googleMap.addMarker(markerOptions)
         }
     }
-
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Places.initialize(requireContext(), GOOGLE_MAPS_API_KEY)
@@ -140,7 +149,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         updateLocationUI()
     }
 
-    @SuppressLint("MissingPermission")
     private fun updateLocationUI() {
         if (map == null) {
             return
@@ -160,7 +168,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         }
     }
 
-    @SuppressLint("MissingPermission")
     private fun getDeviceLocation() {
         /*
          * Get the best and most recent location of the device, which may be null in rare
@@ -198,6 +205,25 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             Log.e("Exception: %s", e.message, e)
         }
     }
+    private fun Context.checkSinglePermission(permission: String) : Boolean {
+        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+    }
+
+    @TargetApi(30)
+    private fun Context.checkBackgroundLocationPermissionAPI30(backgroundLocationRequestCode: Int) {
+        if (checkSinglePermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION)) return
+        AlertDialog.Builder(this)
+            .setTitle(R.string.background_location_permission_title)
+            .setMessage(R.string.background_location_permission_message)
+            .setPositiveButton(R.string.yes) { _, _ ->
+                // this request will take user to Application's Setting page
+                requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), backgroundLocationRequestCode)
+            }
+            .setNegativeButton(R.string.no) { dialog,_ ->
+                dialog.dismiss()
+            }
+            .create()
+    }
 
     private fun generateRandomMarkers(googleMap: GoogleMap) {
         //set your own minimum distance here
@@ -211,7 +237,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         }
     }
 
-    @SuppressLint("MissingPermission")
     private fun generateRandomCoordinates(min: Int, max: Int, googleMap: GoogleMap) {
         var coordinates: LatLng
         var currentLong: Double
