@@ -60,6 +60,7 @@
     <string name="source_name">Source name</string>
     <string name="picasso_pic">Picasso pic:</string>
     <string name="glide_pic">Glide pic:</string>
+    <string name="click_the_circle">click the circle</string>
 
     <string-array name="Genres">
         <item>score</item>

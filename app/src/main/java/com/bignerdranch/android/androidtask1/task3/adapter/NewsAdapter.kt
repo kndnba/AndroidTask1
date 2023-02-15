@@ -1,9 +1,11 @@
 package com.bignerdranch.android.androidtask1.task3.adapter
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +45,10 @@ class NewsAdapter (private val newsList : List<News>) : RecyclerView.Adapter<New
                 bundle.putString("name", listItem.source?.name)
 
                 fragment.arguments = bundle
+
+                holder.itemView
                 (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.animation, R.anim.animation_close)
                     .replace(R.id.main_container, fragment)
                     .addToBackStack(null)
                     .commit()
