@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task3.newsInterface
+package com.bignerdranch.android.androidtask1.task3.model.newsInterface
 
 import retrofit2.Call
 import retrofit2.http.GET

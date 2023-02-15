@@ -61,6 +61,10 @@
     <string name="picasso_pic">Picasso pic:</string>
     <string name="glide_pic">Glide pic:</string>
     <string name="click_the_circle">click the circle</string>
+    <string name="background_location_permission_title">Background location</string>
+    <string name="background_location_permission_message">Do you allow to use your location in background?</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 
     <string-array name="Genres">
         <item>score</item>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".task3.NewsFragment"
+    tools:context=".task3.view.NewsFragment"
     android:id="@+id/news_main_container">
 <ScrollView
     android:layout_width="match_parent"

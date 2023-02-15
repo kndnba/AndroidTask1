@@ -169,10 +169,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     }
 
     private fun getDeviceLocation() {
-        /*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         */
         try {
             if (locationPermissionGranted) {
                 val locationResult = fusedLocationProviderClient.lastLocation
@@ -192,7 +188,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                             )
                         }
                     } else {
-
                         map?.moveCamera(
                             CameraUpdateFactory
                                 .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
@@ -205,6 +200,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             Log.e("Exception: %s", e.message, e)
         }
     }
+
     private fun Context.checkSinglePermission(permission: String) : Boolean {
         return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
     }
@@ -260,7 +256,6 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 4 -> LatLng(currentLat, currentLong - metersCordN)
                 else -> LatLng(currentLat - metersCordN, currentLong)
             }
-
             googleMap.addMarker(
                 MarkerOptions().position(
                     LatLng(
