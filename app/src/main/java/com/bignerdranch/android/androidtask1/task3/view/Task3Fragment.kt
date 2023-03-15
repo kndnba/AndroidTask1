@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bignerdranch.android.androidtask1.MainActivity
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.FragmentTask3Binding
@@ -17,24 +16,34 @@ import com.bignerdranch.android.androidtask1.task3.presenter.NewsContract
 import com.bignerdranch.android.androidtask1.task3.presenter.NewsPresenter
 import com.bignerdranch.android.androidtask1.task3.presenter.NewsAdapter
 import com.bignerdranch.android.androidtask1.task3.model.News
+import com.bignerdranch.android.androidtask1.task3.model.NewsRepository
 import kotlinx.android.synthetic.main.activity_main.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 
-class Task3Fragment : Fragment(), NewsContract {
+class Task3Fragment : MvpAppCompatFragment(), NewsContract {
     private lateinit var binding: FragmentTask3Binding
     private val adapter = NewsAdapter()
+
+    @InjectPresenter
     lateinit var newsPresenter: NewsPresenter
     private var itemsList = ArrayList<String>()
-    private fun injectPresenter() {
-        @InjectPresenter
-        newsPresenter = NewsPresenter(this)
-    }
+    private val repository = NewsRepository()
+
+    @ProvidePresenter
+    fun providePresenter() = NewsPresenter(repository)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        injectPresenter()
         binding = FragmentTask3Binding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply{
             recyclerNewsList.layoutManager = LinearLayoutManager(activity)
             recyclerNewsList.adapter = adapter
@@ -42,7 +51,6 @@ class Task3Fragment : Fragment(), NewsContract {
             swipeRefresh.setOnRefreshListener {
                 createSpinner()
             }
-            return root
         }
     }
 
@@ -69,7 +77,7 @@ class Task3Fragment : Fragment(), NewsContract {
     }
 
     fun showToast(text : String){
-        Toast.makeText(requireContext(), text, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
     override fun loadNews(data: List<News>?) {

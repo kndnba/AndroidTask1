@@ -10,7 +10,7 @@ import com.bignerdranch.android.androidtask1.task1.Task1Fragment
 import com.bignerdranch.android.androidtask1.databinding.ActivityMainBinding
 import com.bignerdranch.android.androidtask1.task2.view.Task2Fragment
 import com.bignerdranch.android.androidtask1.task3.view.Task3Fragment
-import com.bignerdranch.android.androidtask1.task4.Task4Fragment
+import com.bignerdranch.android.androidtask1.task4.view.Task4Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 

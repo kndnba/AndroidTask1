@@ -1,35 +1,38 @@
 package com.bignerdranch.android.androidtask1.task3.presenter
 
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
+import com.bignerdranch.android.androidtask1.task3.model.NewsRepository
 import com.bignerdranch.android.androidtask1.task3.model.common.Common
 import com.bignerdranch.android.androidtask1.task3.model.newsInterface.NewsResponse
+import moxy.InjectViewState
+import moxy.MvpPresenter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 @InjectViewState
 class NewsPresenter(
-    private val view: NewsContract
+    val repository: NewsRepository
 ) : MvpPresenter<NewsContract>() {
 
     private val mService = Common.retrofitService
 
-    private val request = object : Callback<NewsResponse> {
+    val request = object : Callback<NewsResponse> {
         override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
-            loadNews(response)
+            loadNews(response.body())
         }
 
         override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
         }
     }
 
-    private fun loadNews(response: Response<NewsResponse>) {
-        view.showLoading(false)
-        view.loadNews(response.body()?.news)
+    private fun loadNews(response: NewsResponse?) {
+        viewState.showLoading(false)
+        viewState.loadNews(response?.news)
     }
 
     fun getNews(news: String) {
+        viewState.showLoading(true)
+        viewState.setTitle(news)
         when (news) {
             "software" -> getSoftwareNews()
             "entertainment" -> getEntertainmentNews()
@@ -39,34 +42,24 @@ class NewsPresenter(
         }
     }
 
-    private fun getSoftwareNews() {
-        view.showLoading(true)
-        mService.getSoftwareNewsList().enqueue(request)
-        view.setTitle("Software")
+     private fun getSoftwareNews() {
+         repository.getSoftwareNews(request)
     }
 
-    private fun getEntertainmentNews() {
-        view.showLoading(true)
-        mService.getEntertainmentNewsList().enqueue(request)
-        view.setTitle("Entertainment")
+     private fun getEntertainmentNews() {
+        repository.getEntertainmentNews(request)
     }
 
     private fun getHealthNews() {
-        view.showLoading(true)
-        mService.getHealthNewsList().enqueue(request)
-        view.setTitle("Health")
+        repository.getHealthNews(request)
     }
 
     private fun getScienceNews() {
-        view.showLoading(true)
-        mService.getScienceNewsList().enqueue(request)
-        view.setTitle("Science")
+        repository.getScienceNews(request)
     }
 
     private fun getSportsNews() {
-        view.showLoading(true)
-        mService.getSportsNewsList().enqueue(request)
-        view.setTitle("Sports")
+        repository.getSportsNews(request)
     }
 
 }

@@ -17,10 +17,12 @@ class MusicActivity : AppCompatActivity() {
     private lateinit var stopButton: Button
     private lateinit var pauseButton: Button
     private lateinit var chooseArtistButton: Button
+
     private val receiver = MusicReceiver()
     private var myService : MyService? = null
     private var bound = false
     private var sConn: ServiceConnection? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,28 +33,16 @@ class MusicActivity : AppCompatActivity() {
         pauseButton = binding.pause
         chooseArtistButton = binding.chooseArtist
 
-        val intentArtistActivity = Intent(this, ArtistActivity::class.java)
-
         chooseArtistButton.setOnClickListener {
+            val intentArtistActivity = Intent(this, ArtistActivity::class.java)
             startActivity(intentArtistActivity)
         }
         initMusicService()
 
-        val intentFilter = IntentFilter(ArtistActivity.SONG_DATA).also {
+        IntentFilter(ArtistActivity.SONG_DATA).also {
             registerReceiver(receiver, it)
         }
-            val intent = Intent(this, MusicReceiver::class.java)
-            val textViewSongName: TextView = binding.songTitle
-            val textViewGenre: TextView = binding.genreTitle
-            val textViewArtist: TextView = binding.artistTitle
 
-            val songName = intent.getStringExtra("songName")
-            val songGenre = intent.getStringExtra("songGenre")
-            val songArtist = intent.getStringExtra("songArtist")
-
-            textViewSongName.text = songName
-            textViewGenre.text = songGenre
-            textViewArtist.text = songArtist
         sConn = object : ServiceConnection {
             override fun onServiceConnected(name: ComponentName, binder: IBinder) {
                 bound = true

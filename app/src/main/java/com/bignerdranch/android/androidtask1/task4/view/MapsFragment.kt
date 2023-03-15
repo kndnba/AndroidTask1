@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task4
+package com.bignerdranch.android.androidtask1.task4.view
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -18,6 +18,9 @@ import androidx.fragment.app.Fragment
 import com.bignerdranch.android.androidtask1.BuildConfig.GOOGLE_MAPS_API_KEY
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.databinding.FragmentMapsBinding
+import com.bignerdranch.android.androidtask1.task3.presenter.NewsPresenter
+import com.bignerdranch.android.androidtask1.task4.presenter.MapsContract
+import com.bignerdranch.android.androidtask1.task4.presenter.MapsPresenter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -30,14 +33,16 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.net.PlacesClient
 import io.reactivex.disposables.CompositeDisposable
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 import java.util.*
 
-class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
-    private var map: GoogleMap? = null
+class MapsFragment : MvpAppCompatFragment(), MapsContract, GoogleMap.OnMarkerClickListener {
     lateinit var binding: FragmentMapsBinding
     private val compositeDisposable = CompositeDisposable()
     private lateinit var placesClient: PlacesClient
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+//    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var locationPermissionGranted = false
     private var lastKnownLocation: Location? = null
     private val defaultLocation = LatLng(43.2, 76.8)
@@ -45,8 +50,17 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         onMapReadyCallback(it)
     }
 
+    @InjectPresenter
+    lateinit var mapsPresenter: MapsPresenter
+
+    @ProvidePresenter
+    fun providePresenter() = MapsPresenter(
+        LocationServices.getFusedLocationProviderClient(requireContext())
+    )
+
     private fun onMapReadyCallback(googleMap: GoogleMap){
-        map = googleMap
+        mapsPresenter.map = googleMap
+
         googleMap.addMarker(MarkerOptions().position(defaultLocation).title("Marker in Almaty"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(defaultLocation))
         googleMap.setMinZoomPreference(12.0F)
@@ -69,15 +83,14 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             googleMap.addMarker(markerOptions)
         }
     }
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Places.initialize(requireContext(), GOOGLE_MAPS_API_KEY)
         placesClient = Places.createClient(requireContext())
 
         // Construct a FusedLocationProviderClient.
-        fusedLocationProviderClient =
-            LocationServices.getFusedLocationProviderClient(requireContext())
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
     }
 
     override fun onCreateView(
@@ -101,7 +114,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        map?.animateCamera(
+        mapsPresenter.map?.animateCamera(
             CameraUpdateFactory.newLatLng(
                 LatLng(
                     marker.position.latitude,
@@ -112,7 +125,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         return true
     }
 
-    private fun getLocationPermission() {
+    override fun getLocationPermission() {
         if (ContextCompat.checkSelfPermission(
                 this.requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -128,77 +141,20 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         }
     }
 
+    override fun updateLocationUI() {
+        mapsPresenter.updateLocationUI()
+    }
+
+    override fun getDeviceLocation() {
+        mapsPresenter.getDeviceLocation()
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
         grantResults: IntArray
     ) {
-        locationPermissionGranted = false
-        when (requestCode) {
-            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION -> {
-
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED
-                ) {
-                    locationPermissionGranted = true
-                }
-            }
-            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        }
-        updateLocationUI()
-    }
-
-    private fun updateLocationUI() {
-        if (map == null) {
-            return
-        }
-        try {
-            if (locationPermissionGranted) {
-                map?.isMyLocationEnabled = true
-                map?.uiSettings?.isMyLocationButtonEnabled = true
-            } else {
-                map?.isMyLocationEnabled = false
-                map?.uiSettings?.isMyLocationButtonEnabled = false
-                lastKnownLocation = null
-                getLocationPermission()
-            }
-        } catch (e: SecurityException) {
-            Log.e("Exception: %s", e.message, e)
-        }
-    }
-
-    private fun getDeviceLocation() {
-        try {
-            if (locationPermissionGranted) {
-                val locationResult = fusedLocationProviderClient.lastLocation
-                locationResult.addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        // Set the map's camera position to the current location of the device.
-                        lastKnownLocation = task.result
-                        if (lastKnownLocation != null) {
-                            val location = LatLng(
-                                requireNotNull(lastKnownLocation).latitude,
-                                requireNotNull(lastKnownLocation).longitude
-                            )
-                            map?.moveCamera(
-                                CameraUpdateFactory.newLatLngZoom(
-                                    location, DEFAULT_ZOOM.toFloat()
-                                )
-                            )
-                        }
-                    } else {
-                        map?.moveCamera(
-                            CameraUpdateFactory
-                                .newLatLngZoom(defaultLocation, DEFAULT_ZOOM.toFloat())
-                        )
-                        map?.uiSettings?.isMyLocationButtonEnabled = false
-                    }
-                }
-            }
-        } catch (e: SecurityException) {
-            Log.e("Exception: %s", e.message, e)
-        }
+        mapsPresenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun Context.checkSinglePermission(permission: String) : Boolean {
@@ -221,52 +177,17 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             .create()
     }
 
-    private fun generateRandomMarkers(googleMap: GoogleMap) {
-        //set your own minimum distance here
-        val minimumDistanceFromMe = 10
-        //set your own maximum distance here
-        val maximumDistanceFromMe = 10000
-        //set number of markers you want to generate in Map/
-        val markersToGenerate = 5
-        for (position in 1..markersToGenerate) {
-            generateRandomCoordinates(minimumDistanceFromMe, maximumDistanceFromMe, googleMap)
-        }
+
+
+
+
+    override fun generateRandomMarkers(googleMap: GoogleMap) {
+        mapsPresenter.generateRandomMarkers(googleMap)
     }
 
-    private fun generateRandomCoordinates(min: Int, max: Int, googleMap: GoogleMap) {
-        var coordinates: LatLng
-        var currentLong: Double
-        var currentLat: Double
-        val meterCord = 0.00900900900901 / 1000
-        //Generate random Meters between the maximum and minimum Meters
-        val r = Random()
-        val randomMeters: Int = r.nextInt(max + min)
-        //then Generating Random numbers for different Methods
-        val randomPM: Int = r.nextInt(6)
-
-        val metersCordN = meterCord * randomMeters.toDouble()
-        fusedLocationProviderClient.lastLocation.addOnCompleteListener {
-            currentLong = it.result.longitude
-            currentLat = it.result.latitude
-            coordinates = when (randomPM) {
-                0 -> LatLng(currentLat + metersCordN, currentLong + metersCordN)
-                1 -> LatLng(currentLat - metersCordN, currentLong - metersCordN)
-                2 -> LatLng(currentLat + metersCordN, currentLong - metersCordN)
-                3 -> LatLng(currentLat - metersCordN, currentLong + metersCordN)
-                4 -> LatLng(currentLat, currentLong - metersCordN)
-                else -> LatLng(currentLat - metersCordN, currentLong)
-            }
-            googleMap.addMarker(
-                MarkerOptions().position(
-                    LatLng(
-                        requireNotNull(coordinates.latitude),
-                        requireNotNull(coordinates.longitude)
-                    )
-                ).title("mid point").snippet("Snippet")
-            )
-        }
+    override fun generateRandomCoordinates(min: Int, max: Int, googleMap: GoogleMap) {
+        mapsPresenter.generateRandomCoordinates(min, max, googleMap)
     }
-
     companion object {
         private const val DEFAULT_ZOOM = 15
         private const val PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1

@@ -1,9 +1,9 @@
 package com.bignerdranch.android.androidtask1.task3.presenter
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.AddToEndStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.bignerdranch.android.androidtask1.task3.model.News
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndStrategy::class)
 interface NewsContract : MvpView {
