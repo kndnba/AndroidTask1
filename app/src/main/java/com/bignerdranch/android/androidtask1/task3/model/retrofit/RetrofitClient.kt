@@ -1,6 +1,6 @@
-package com.bignerdranch.android.androidtask1.task3.retrofit
+package com.bignerdranch.android.androidtask1.task3.model.retrofit
 
-import com.bignerdranch.android.androidtask1.task3.common.Common
+import com.bignerdranch.android.androidtask1.task3.model.common.Common
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

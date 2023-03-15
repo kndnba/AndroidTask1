@@ -1,27 +1,35 @@
-package com.bignerdranch.android.androidtask1.task3.adapter
+package com.bignerdranch.android.androidtask1.task3.presenter
 
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.BounceInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.R
-import com.bignerdranch.android.androidtask1.task3.NewsFragment
+import com.bignerdranch.android.androidtask1.task3.view.NewsFragment
 import com.bignerdranch.android.androidtask1.task3.model.News
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_layout_news.view.*
 
-class NewsAdapter (private val newsList : List<News>) : RecyclerView.Adapter<NewsAdapter.MyViewHolder>(){
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.MyViewHolder>(){
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val image: ImageView = itemView.image_news
         val title : TextView = itemView.txt_title
         val publishedAt : TextView = itemView.txt_publishedAt
         val author: TextView = itemView.txt_author
+    }
+
+    private val newsList: MutableList<News> = arrayListOf()
+
+    fun addNews(data: List<News>?) {
+        data?.let {
+            newsList.clear()
+            newsList.addAll(data)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

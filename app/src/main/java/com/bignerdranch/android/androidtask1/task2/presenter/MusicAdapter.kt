@@ -10,12 +10,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtask1.R
 import com.bignerdranch.android.androidtask1.task2.view.ArtistActivity.Companion.SONG_DATA
 import com.bignerdranch.android.androidtask1.task2.model.db.MyDBNames
+import com.bignerdranch.android.androidtask1.task3.model.News
 
-internal class MusicAdapter(private var itemsList: List<String>, val listener: () -> Unit) : RecyclerView.Adapter<MusicAdapter.MyViewHolder>() {
-    class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MusicAdapter: RecyclerView.Adapter<MusicAdapter.MyViewHolder>() {
+    class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val textView: TextView? = view.findViewById(R.id.musicTextView)
     }
+    var itemsList : MutableList<String> = arrayListOf()
+    var listener: () -> Unit = {}
 
+    fun addItems(data: String?) {
+        data?.let {
+            itemsList.addAll((listOf(it)))
+            notifyDataSetChanged()
+        }
+    }
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,6 +33,11 @@ internal class MusicAdapter(private var itemsList: List<String>, val listener: (
 
     override fun getItemCount(): Int {
         return itemsList.size
+    }
+
+    @JvmName("setListener1")
+    fun setListener(listener: () -> Unit) {
+        this.listener = listener
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -42,6 +56,7 @@ internal class MusicAdapter(private var itemsList: List<String>, val listener: (
                 putExtra(MyDBNames.GENRE, array[2])
                 putExtra(MyDBNames.PATH, array[3])
             }
+
             intent.action = SONG_DATA
             intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES)
             context.sendBroadcast(intent)

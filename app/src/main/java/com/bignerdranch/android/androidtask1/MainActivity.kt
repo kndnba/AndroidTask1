@@ -1,8 +1,6 @@
 package com.bignerdranch.android.androidtask1
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -10,14 +8,11 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.bignerdranch.android.androidtask1.task1.Task1Fragment
 import com.bignerdranch.android.androidtask1.databinding.ActivityMainBinding
-import com.bignerdranch.android.androidtask1.task2.Task2Fragment
-import com.bignerdranch.android.androidtask1.task3.Task3Fragment
-import com.bignerdranch.android.androidtask1.task4.Task4Fragment
+import com.bignerdranch.android.androidtask1.task2.view.Task2Fragment
+import com.bignerdranch.android.androidtask1.task3.view.Task3Fragment
+import com.bignerdranch.android.androidtask1.task4.view.Task4Fragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
-import java.util.ResourceBundle.getBundle
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding

@@ -9,7 +9,6 @@ import android.widget.Toast
 
 class MyService : Service(), MediaPlayer.OnPreparedListener {
     private var musicPlayer: MediaPlayer? = null
-    private var isPlaying = false
 
     inner class LocalBinder : Binder() {
         fun getService(): MyService = this@MyService

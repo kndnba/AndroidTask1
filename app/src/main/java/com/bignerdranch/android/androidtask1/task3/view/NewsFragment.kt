@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task3
+package com.bignerdranch.android.androidtask1.task3.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

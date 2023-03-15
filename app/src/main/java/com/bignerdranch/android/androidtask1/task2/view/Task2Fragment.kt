@@ -1,4 +1,4 @@
-package com.bignerdranch.android.androidtask1.task2
+package com.bignerdranch.android.androidtask1.task2.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.bignerdranch.android.androidtask1.databinding.FragmentTask2Binding
 import android.widget.Button
-import com.bignerdranch.android.androidtask1.task2.view.MusicActivity
 
 
 class Task2Fragment : Fragment() {
